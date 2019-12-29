@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wave_delay: 5
-  WAVE_DELAY_TEXT: 'Next Wave Starting In '
+  WAVE_DELAY_TEXT: 'Next Wave Spawning In '
   WAVE_NUM_TEXT: 'Wave:'
   SECONDS_STRING: ' Seconds'
   waves:
