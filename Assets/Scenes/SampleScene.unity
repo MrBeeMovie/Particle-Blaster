@@ -928,8 +928,6 @@ GameObject:
   - component: {fileID: 1740826489}
   - component: {fileID: 1740826493}
   - component: {fileID: 1740826490}
-  - component: {fileID: 1740826491}
-  - component: {fileID: 1740826492}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1031,34 +1029,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1740826486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 889e9a80cc716f042bace83e0ebe3eb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 9.5
-  horizontal_axis: Horizontal
-  vertical_axis: Vertical
---- !u!114 &1740826491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740826486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77e93981fcd125e4993fc28caffc7662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1740826492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740826486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e029ca981e189b4599e677e46723623, type: 3}
+  m_Script: {fileID: 11500000, guid: 50e2bbe312bf64e4c97f36afa32514e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet_prefab: {fileID: 6616186288976902586, guid: f36e26227eced424fbebbe657fecda1e,
@@ -1066,6 +1037,9 @@ MonoBehaviour:
   fire_position: {fileID: 1259756917}
   bullet_force: 20
   fire_rate: 0.25
+  speed: 10
+  horizontal_axis: Horizontal
+  vertical_axis: Vertical
 --- !u!61 &1740826493
 BoxCollider2D:
   m_ObjectHideFlags: 0
