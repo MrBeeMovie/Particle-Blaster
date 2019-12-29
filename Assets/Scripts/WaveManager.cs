@@ -83,6 +83,9 @@ public class WaveManager : MonoBehaviour
         // wait until all enemies have been spawned
         yield return new WaitUntil(() => CheckWaveSpawned(wave));
 
+        // reset wave spawned values to false
+        SetWaveSpawnedFalse(wave);
+
         // update wave_num
         wave_num_text.text = WAVE_NUM_TEXT + (++wave_num);
 
@@ -125,5 +128,12 @@ public class WaveManager : MonoBehaviour
             all_spawned &= enemy.spawned;
 
         return all_spawned;
+    }
+
+    private void SetWaveSpawnedFalse(Wave wave)
+    {
+        // set each spawned value to false in the wave
+        foreach (EnemyInfo enemy in wave.enemies)
+            enemy.spawned = false;
     }
 }
