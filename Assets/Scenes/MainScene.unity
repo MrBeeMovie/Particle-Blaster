@@ -743,7 +743,7 @@ MonoBehaviour:
   SECONDS_STRING: ' Seconds'
   waves:
   - enemies:
-    - type: {fileID: 5831521264014772684, guid: af90948cdc63bf3478f2b647fbacc758,
+    - type: {fileID: 9183352340639005166, guid: f7d16232f6de3cd4f96c1f4859d05803,
         type: 3}
       spawn_points:
       - {fileID: 1196387230}
@@ -752,7 +752,7 @@ MonoBehaviour:
       delay: 1
       spawned: 0
   - enemies:
-    - type: {fileID: 5831521264014772684, guid: af90948cdc63bf3478f2b647fbacc758,
+    - type: {fileID: 9183352340639005166, guid: f7d16232f6de3cd4f96c1f4859d05803,
         type: 3}
       spawn_points:
       - {fileID: 1196387230}
