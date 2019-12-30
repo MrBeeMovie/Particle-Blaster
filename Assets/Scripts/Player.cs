@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -32,6 +33,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        // check if health is zero or less
+        if (health <= 0)
+            SceneManager.LoadScene("GameOver");
+
         // process horizontal movement
         velocity.x = Input.GetAxis(horizontal_axis);
         // process vertical movement
