@@ -107,7 +107,14 @@ public class WaveManager : MonoBehaviour
             int spawn_indx = Random.Range(0, enemy.spawn_points.Length);
 
             GameObject new_enemy = Instantiate(enemy.type, enemy.spawn_points[spawn_indx]);
-            new_enemy.GetComponent<Enemy_Chase>().player = player;
+            Enemy_Chase enemy_chase_script = new_enemy.GetComponent<Enemy_Chase>();
+            enemy_chase_script.player = player;
+
+            Enemy_Shoot enemy_shoot_script = new_enemy.GetComponent<Enemy_Shoot>();
+
+            // if this is a shooter enemy
+            if (enemy_shoot_script != null)
+                enemy_shoot_script.player = player;
 
             // wait for spawn delay
             yield return new WaitForSecondsRealtime(enemy.delay);

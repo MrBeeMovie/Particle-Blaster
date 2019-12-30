@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3429367805002814262}
   m_Layer: 0
   m_Name: Stalker
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,5 +163,5 @@ MonoBehaviour:
   cc_radius: 1
   move_delay: 1
   damage: 1
-  keep_distance: 1
   player: {fileID: 0}
+  keep_distance: 1

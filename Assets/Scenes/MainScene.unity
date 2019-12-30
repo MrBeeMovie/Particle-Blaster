@@ -743,12 +743,44 @@ MonoBehaviour:
   SECONDS_STRING: ' Seconds'
   waves:
   - enemies:
+    - type: {fileID: 5831521264014772684, guid: af90948cdc63bf3478f2b647fbacc758,
+        type: 3}
+      spawn_points:
+      - {fileID: 1196387230}
+      - {fileID: 2030072906}
+      amount: 5
+      delay: 0.75
+      spawned: 0
+  - enemies:
     - type: {fileID: 9183352340639005166, guid: f7d16232f6de3cd4f96c1f4859d05803,
         type: 3}
       spawn_points:
       - {fileID: 1196387230}
       - {fileID: 2030072906}
-      amount: 2
+      - {fileID: 489541525}
+      - {fileID: 1968319711}
+      amount: 3
+      delay: 1
+      spawned: 0
+    - type: {fileID: 5831521264014772684, guid: af90948cdc63bf3478f2b647fbacc758,
+        type: 3}
+      spawn_points:
+      - {fileID: 1196387230}
+      - {fileID: 2030072906}
+      - {fileID: 489541525}
+      - {fileID: 1968319711}
+      amount: 3
+      delay: 1
+      spawned: 0
+  - enemies:
+    - type: {fileID: 9183352340639005166, guid: f5190cdd13528a4429336421009a859e,
+        type: 3}
+      spawn_points:
+      - {fileID: 1196387230}
+      - {fileID: 2030072906}
+      - {fileID: 489541525}
+      - {fileID: 1968319711}
+      amount: 5
       delay: 1
       spawned: 0
   - enemies:
@@ -757,8 +789,10 @@ MonoBehaviour:
       spawn_points:
       - {fileID: 1196387230}
       - {fileID: 2030072906}
-      amount: 10
-      delay: 1
+      - {fileID: 489541525}
+      - {fileID: 1968319711}
+      amount: 5
+      delay: 0.5
       spawned: 0
   player: {fileID: 1740826488}
   wave_num_text: {fileID: 395549569}
@@ -1123,6 +1157,7 @@ MonoBehaviour:
   horizontal_axis: Horizontal
   vertical_axis: Vertical
   HEALTH_STRING: 'Health:'
+  PLAYER_BULLET_TAG: Player_Bullet
 --- !u!61 &1740826493
 BoxCollider2D:
   m_ObjectHideFlags: 0

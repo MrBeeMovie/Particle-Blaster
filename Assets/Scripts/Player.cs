@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
         hurt_delay = 1, hurt_alpha = .25f;
     [SerializeField] private int health = 5;
     [SerializeField] private string horizontal_axis = "Horizontal", vertical_axis = "Vertical",
-        HEALTH_STRING = "Health:";
+        HEALTH_STRING = "Health:", PLAYER_BULLET_TAG = "Player_Bullet";
 
     private Rigidbody2D rb;
     private SpriteRenderer spriter;
@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
     {
         // create bullet object and add force
         GameObject bullet = Instantiate(bullet_prefab, fire_position.position, fire_position.rotation);
+        bullet.tag = PLAYER_BULLET_TAG;
         Rigidbody2D bullet_rb = bullet.GetComponent<Rigidbody2D>();
         bullet_rb.AddForce(fire_position.up * bullet_force, ForceMode2D.Impulse);
     }

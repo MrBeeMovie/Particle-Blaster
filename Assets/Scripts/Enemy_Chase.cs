@@ -6,7 +6,6 @@ public class Enemy_Chase : MonoBehaviour
 {
     [SerializeField] private float speed = 5f, cc_radius = 1, move_delay = 1;
     [SerializeField] private int damage = 1;
-    [SerializeField] private bool keep_distance = false;
 
     private Vector2 velocity = Vector2.zero, direction;
     private Rigidbody2D rb;
@@ -15,6 +14,7 @@ public class Enemy_Chase : MonoBehaviour
     private float time_d_move;
 
     public Transform player;
+    public bool keep_distance = false;
 
     private void Start()
     {
