@@ -192,11 +192,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  cc_radius: 3
-  move_delay: 1
+  ccRadius: 3
+  moveDelay: 1
   damage: 1
   player: {fileID: 0}
-  keep_distance: 1
+  keepDistance: 1
 --- !u!114 &7798957377532150763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,10 +209,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d581f4b2fc856b84fa57b50523980fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot_delay: 0.75
-  bullet_force: 10
+  shootDelay: 0.75
+  bulletForce: 10
   ENEMY_BULLET_TAG: Enemy_Bullet
-  bullet_prefab: {fileID: 6616186288976902586, guid: f36e26227eced424fbebbe657fecda1e,
+  bulletPrefab: {fileID: 6616186288976902586, guid: f36e26227eced424fbebbe657fecda1e,
     type: 3}
   player: {fileID: 0}
-  fire_position: {fileID: 3714134018723946326}
+  firePosition: {fileID: 3714134018723946326}

@@ -737,7 +737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5137c385b8801e7468f95bf285263c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wave_delay: 5
+  waveDelay: 5
   WAVE_DELAY_TEXT: 'Next Wave Spawning In '
   WAVE_NUM_TEXT: 'Wave:'
   SECONDS_STRING: ' Seconds'
@@ -745,58 +745,17 @@ MonoBehaviour:
   - enemies:
     - type: {fileID: 5831521264014772684, guid: af90948cdc63bf3478f2b647fbacc758,
         type: 3}
-      spawn_points:
+      spawnPoints:
       - {fileID: 1196387230}
       - {fileID: 2030072906}
+      - {fileID: 489541525}
+      - {fileID: 1968319711}
       amount: 5
       delay: 0.75
       spawned: 0
-  - enemies:
-    - type: {fileID: 9183352340639005166, guid: f7d16232f6de3cd4f96c1f4859d05803,
-        type: 3}
-      spawn_points:
-      - {fileID: 1196387230}
-      - {fileID: 2030072906}
-      - {fileID: 489541525}
-      - {fileID: 1968319711}
-      amount: 3
-      delay: 1
-      spawned: 0
-    - type: {fileID: 5831521264014772684, guid: af90948cdc63bf3478f2b647fbacc758,
-        type: 3}
-      spawn_points:
-      - {fileID: 1196387230}
-      - {fileID: 2030072906}
-      - {fileID: 489541525}
-      - {fileID: 1968319711}
-      amount: 3
-      delay: 1
-      spawned: 0
-  - enemies:
-    - type: {fileID: 9183352340639005166, guid: f5190cdd13528a4429336421009a859e,
-        type: 3}
-      spawn_points:
-      - {fileID: 1196387230}
-      - {fileID: 2030072906}
-      - {fileID: 489541525}
-      - {fileID: 1968319711}
-      amount: 5
-      delay: 1
-      spawned: 0
-  - enemies:
-    - type: {fileID: 9183352340639005166, guid: f7d16232f6de3cd4f96c1f4859d05803,
-        type: 3}
-      spawn_points:
-      - {fileID: 1196387230}
-      - {fileID: 2030072906}
-      - {fileID: 489541525}
-      - {fileID: 1968319711}
-      amount: 5
-      delay: 0.5
-      spawned: 0
   player: {fileID: 1740826488}
-  wave_num_text: {fileID: 395549569}
-  wave_delay_text: {fileID: 904730594}
+  waveNumText: {fileID: 395549569}
+  waveDelayText: {fileID: 904730594}
 --- !u!4 &1001196435
 Transform:
   m_ObjectHideFlags: 0
@@ -992,7 +951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd2571c1510d9640b803ac03a3e49a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score_text: {fileID: 770082907}
+  scoreText: {fileID: 770082907}
 --- !u!1 &1534409155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,18 +1103,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e2bbe312bf64e4c97f36afa32514e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet_prefab: {fileID: 6616186288976902586, guid: f36e26227eced424fbebbe657fecda1e,
+  bulletPrefab: {fileID: 6616186288976902586, guid: f36e26227eced424fbebbe657fecda1e,
     type: 3}
-  fire_position: {fileID: 1259756917}
-  health_text: {fileID: 1035010682}
-  bullet_force: 20
-  fire_rate: 0.25
+  firePosition: {fileID: 1259756917}
+  healthText: {fileID: 1035010682}
+  bulletForce: 20
+  fireRate: 0.25
   speed: 10
-  hurt_delay: 0.5
-  hurt_alpha: 0.25
+  hurtDelay: 1
+  hurtAlpha: 0.25
   health: 5
-  horizontal_axis: Horizontal
-  vertical_axis: Vertical
+  horizontalAxis: Horizontal
+  verticalAxis: Vertical
   HEALTH_STRING: 'Health:'
   PLAYER_BULLET_TAG: Player_Bullet
 --- !u!61 &1740826493

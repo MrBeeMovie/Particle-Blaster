@@ -10,7 +10,7 @@ public class WaveManager : MonoBehaviour
     public class EnemyInfo
     {
         public GameObject type;
-        public Transform[] spawn_points;
+        public Transform[] spawnPoints;
         [Min(1)] public int amount;
         [Min(0)] public float delay;
         [HideInInspector] public bool spawned;
@@ -23,48 +23,48 @@ public class WaveManager : MonoBehaviour
         public EnemyInfo[] enemies;
     }
 
-    [SerializeField] private float wave_delay = 5f;
+    [SerializeField] private float waveDelay = 5f;
     [SerializeField] private string WAVE_DELAY_TEXT = "Next Wave Starting In ", 
         WAVE_NUM_TEXT = "Wave:", SECONDS_STRING = " Seconds";
 
     private enum State { WAITING, SPAWNING };
     // default state is waiting
     private State state = State.WAITING;
-    private int wave_indx = 0, wave_num = 1;
-    private float elapsed_time;
+    private int waveIndx = 0, waveNum = 1;
+    private float deltaTime;
 
     public Wave[] waves;
     public Transform player;
-    public Text wave_num_text, wave_delay_text;
+    public Text waveNumText, waveDelayText;
 
     private void Start()
     {
         // allow first wave to spawn upon starting up game
-        elapsed_time = wave_delay;
+        deltaTime = waveDelay;
     }
 
     void Update()
     {
         if (state == State.WAITING)
         {
-            if(elapsed_time >= wave_delay)
+            if(deltaTime >= waveDelay)
             {
-                wave_delay_text.gameObject.SetActive(false);
+                waveDelayText.gameObject.SetActive(false);
 
                 // check if wave_indx is valid
-                if (wave_indx >= waves.Length)
-                    wave_indx = 0;
+                if (waveIndx >= waves.Length)
+                    waveIndx = 0;
                 //spawn wave at spawn index
-                StartCoroutine(SpawnWave(waves[wave_indx++]));
+                StartCoroutine(SpawnWave(waves[waveIndx++]));
             }
             // otherwise add to elapsed time and show countdown
             else
             {
-                wave_delay_text.gameObject.SetActive(true);
+                waveDelayText.gameObject.SetActive(true);
 
                 // update elapsed time and text
-                elapsed_time += Time.deltaTime;
-                wave_delay_text.text = WAVE_DELAY_TEXT + (int)(wave_delay - elapsed_time) + SECONDS_STRING;
+                deltaTime += Time.deltaTime;
+                waveDelayText.text = WAVE_DELAY_TEXT + (int)(waveDelay - deltaTime) + SECONDS_STRING;
             }
         }
     }
@@ -87,11 +87,11 @@ public class WaveManager : MonoBehaviour
         SetWaveSpawnedFalse(wave);
 
         // update wave_num
-        wave_num_text.text = WAVE_NUM_TEXT + (++wave_num);
+        waveNumText.text = WAVE_NUM_TEXT + (++waveNum);
 
         // set to waiting state and set elapsed time to zero
         state = State.WAITING;
-        elapsed_time = 0;
+        deltaTime = 0;
 
         yield return null;
     }
@@ -104,17 +104,16 @@ public class WaveManager : MonoBehaviour
         while(count++ < enemy.amount)
         {
             // generate random spawn point index
-            int spawn_indx = Random.Range(0, enemy.spawn_points.Length);
+            int spawnIndx = Random.Range(0, enemy.spawnPoints.Length);
 
-            GameObject new_enemy = Instantiate(enemy.type, enemy.spawn_points[spawn_indx]);
-            Enemy_Chase enemy_chase_script = new_enemy.GetComponent<Enemy_Chase>();
-            enemy_chase_script.player = player;
+            GameObject newEnemy = Instantiate(enemy.type, enemy.spawnPoints[spawnIndx]);
+            newEnemy.GetComponent<Enemy_Chase>().player = player;
 
-            Enemy_Shoot enemy_shoot_script = new_enemy.GetComponent<Enemy_Shoot>();
+            Enemy_Shoot enemyShootScript = newEnemy.GetComponent<Enemy_Shoot>();
 
             // if this is a shooter enemy
-            if (enemy_shoot_script != null)
-                enemy_shoot_script.player = player;
+            if (enemyShootScript != null)
+                enemyShootScript.player = player;
 
             // wait for spawn delay
             yield return new WaitForSecondsRealtime(enemy.delay);
@@ -128,13 +127,13 @@ public class WaveManager : MonoBehaviour
 
     private bool CheckWaveSpawned(Wave wave)
     {
-        bool all_spawned = true;
+        bool allSpawned = true;
 
         // and all spawned variables in wave
         foreach (EnemyInfo enemy in wave.enemies)
-            all_spawned &= enemy.spawned;
+            allSpawned &= enemy.spawned;
 
-        return all_spawned;
+        return allSpawned;
     }
 
     private void SetWaveSpawnedFalse(Wave wave)

@@ -6,29 +6,29 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public GameObject bullet_prefab;
-    public Transform fire_position;
-    public Text health_text;
+    public GameObject bulletPrefab;
+    public Transform firePosition;
+    public Text healthText;
 
-    [SerializeField] private float bullet_force = 20f, fire_rate = .25f, speed = 10,
-        hurt_delay = 1, hurt_alpha = .25f;
+    [SerializeField] private float bulletForce = 20f, fireRate = .25f, speed = 10,
+        hurtDelay = 1, hurtAlpha = .25f;
     [SerializeField] private int health = 5;
-    [SerializeField] private string horizontal_axis = "Horizontal", vertical_axis = "Vertical",
+    [SerializeField] private string horizontalAxis = "Horizontal", verticalAxis = "Vertical",
         HEALTH_STRING = "Health:", PLAYER_BULLET_TAG = "Player_Bullet";
 
     private Rigidbody2D rb;
-    private SpriteRenderer spriter;
-    private Vector2 mouse_pos, velocity = Vector2.zero;
-    private float time_d_shooting = 0f, time_d_hurting = 0f;
+    private SpriteRenderer spriteRend;
+    private Vector2 mousePos, velocity = Vector2.zero;
+    private float deltaShoot = 0f, deltaHurt = 0f;
     private bool hurting = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriter = GetComponent<SpriteRenderer>();
+        spriteRend = GetComponent<SpriteRenderer>();
 
         // set health_text to initial health value
-        health_text.text = HEALTH_STRING + health;
+        healthText.text = HEALTH_STRING + health;
     }
 
     void Update()
@@ -38,26 +38,26 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("GameOver");
 
         // process horizontal movement
-        velocity.x = Input.GetAxis(horizontal_axis);
+        velocity.x = Input.GetAxis(horizontalAxis);
         // process vertical movement
-        velocity.y = Input.GetAxis(vertical_axis);
+        velocity.y = Input.GetAxis(verticalAxis);
 
         // get mouse position
-        mouse_pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // shoot if we are above fire_rate delay
-        if (Input.GetButton("Fire1") && fire_rate <= time_d_shooting)
+        if (Input.GetButton("Fire1") && fireRate <= deltaShoot)
         {
             Shoot();
-            time_d_shooting = 0;
+            deltaShoot = 0;
         }
         // otherwise increase delay
         else
-            time_d_shooting += Time.deltaTime;
+            deltaShoot += Time.deltaTime;
 
         // if hurting add delta time to hurting delta time
         if (hurting)
-            time_d_hurting += Time.deltaTime;
+            deltaHurt += Time.deltaTime;
     }
 
     private void FixedUpdate()
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + (velocity * speed * Time.deltaTime));
 
         // apply rotation
-        Vector2 direction = mouse_pos - rb.position;
+        Vector2 direction = mousePos - rb.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = angle;
     }
@@ -74,10 +74,10 @@ public class Player : MonoBehaviour
     private void Shoot()
     {
         // create bullet object and add force
-        GameObject bullet = Instantiate(bullet_prefab, fire_position.position, fire_position.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
         bullet.tag = PLAYER_BULLET_TAG;
-        Rigidbody2D bullet_rb = bullet.GetComponent<Rigidbody2D>();
-        bullet_rb.AddForce(fire_position.up * bullet_force, ForceMode2D.Impulse);
+        Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+        bulletRB.AddForce(firePosition.up * bulletForce, ForceMode2D.Impulse);
     }
 
     public void ApplyDamage(int damage)
@@ -95,22 +95,22 @@ public class Player : MonoBehaviour
         health -= damage;
 
         // redraw health gui text
-        health_text.text = HEALTH_STRING + health;
+        healthText.text = HEALTH_STRING + health;
 
         // set alpha of player sprite to hurt alpha%
-        Color old_color = spriter.color;
+        Color old_color = spriteRend.color;
         Color new_color = old_color;
-        new_color.a = hurt_alpha;
-        spriter.color = new_color;
+        new_color.a = hurtAlpha;
+        spriteRend.color = new_color;
 
         // wait until delta time on hurting is past hurt delay
-        yield return new WaitUntil(() => (time_d_hurting >= hurt_delay));
+        yield return new WaitUntil(() => (deltaHurt >= hurtDelay));
 
         // reset alpha
-        spriter.color = old_color;
+        spriteRend.color = old_color;
 
         // reset delta time on hurting
-        time_d_hurting = 0f;
+        deltaHurt = 0f;
 
         // set hurting to false
         hurting = false;

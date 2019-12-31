@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  cc_radius: 1
-  move_delay: 1
+  ccRadius: 1
+  moveDelay: 1
   damage: 1
   player: {fileID: 0}
-  keep_distance: 1
+  keepDistance: 1

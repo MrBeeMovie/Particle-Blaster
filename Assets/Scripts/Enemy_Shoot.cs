@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Enemy_Shoot : MonoBehaviour
 {
-    [SerializeField] private float shoot_delay = .75f, bullet_force = 10f;
+    [SerializeField] private float shootDelay = .75f, bulletForce = 10f;
     [SerializeField] private string ENEMY_BULLET_TAG = "Enemy_Bullet";
 
-    private float time_d_shoot = 0;
+    private float deltaShoot = 0;
 
-    public GameObject bullet_prefab;
-    public Transform player, fire_position;
+    public GameObject bulletPrefab;
+    public Transform player, firePosition;
 
     void Update()
     {
         // if time_d_shoot is less than the shoot delay
-        if (time_d_shoot <= shoot_delay)
-            time_d_shoot += Time.deltaTime;
+        if (deltaShoot <= shootDelay)
+            deltaShoot += Time.deltaTime;
         else
         {
             // shoot at target
@@ -31,12 +31,12 @@ public class Enemy_Shoot : MonoBehaviour
         direction.Normalize();
 
         // shoot bullet at player
-        GameObject bullet = Instantiate(bullet_prefab, fire_position.position, fire_position.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePosition.position, firePosition.rotation);
         bullet.tag = ENEMY_BULLET_TAG;
         Rigidbody2D bullet_rb = bullet.GetComponent<Rigidbody2D>();
-        bullet_rb.AddForce(fire_position.up * bullet_force, ForceMode2D.Impulse);
+        bullet_rb.AddForce(firePosition.up * bulletForce, ForceMode2D.Impulse);
 
         // reset time_d_shoot
-        time_d_shoot = 0;
+        deltaShoot = 0;
     }
 }
