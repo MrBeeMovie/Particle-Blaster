@@ -107,7 +107,12 @@ public class WaveManager : MonoBehaviour
             int spawnIndx = Random.Range(0, enemy.spawnPoints.Length);
 
             GameObject newEnemy = Instantiate(enemy.type, enemy.spawnPoints[spawnIndx]);
-            newEnemy.GetComponent<Enemy_Chase>().player = player;
+
+            Enemy_Chase enemyChaseScript = newEnemy.GetComponent<Enemy_Chase>();
+
+            // if this is an enemy that chases
+            if(enemyChaseScript != null)
+                newEnemy.GetComponent<Enemy_Chase>().player = player;
 
             Enemy_Shoot enemyShootScript = newEnemy.GetComponent<Enemy_Shoot>();
 
